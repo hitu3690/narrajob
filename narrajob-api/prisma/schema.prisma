@@ -14,7 +14,7 @@ model Article {
   id         Int              @id @default(autoincrement())
   title      String
   img        String
-  assignedAt DateTime         @default(now())
+  assignedAt DateTime         @default(now()) @db.Timestamp(0)
   // N:N
   tags       TagsOnArticles[]
 
