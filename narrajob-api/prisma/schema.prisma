@@ -11,12 +11,14 @@ datasource db {
 }
 
 model Article {
-  id         Int              @id @default(autoincrement())
-  title      String
-  img        String
-  assignedAt DateTime         @default(now()) @db.Timestamp(0)
+  id        Int              @id @default(autoincrement())
+  title     String
+  img       String
+  createdAt DateTime         @default(now()) @db.Timestamp(0)
+  updateAt  DateTime         @default(now()) @updatedAt @db.Timestamp(0)
+  createdBy String           @default("author")
   // N:N
-  tags       TagsOnArticles[]
+  tags      TagsOnArticles[]
 
   @@map("articles")
 }
@@ -31,12 +33,10 @@ model Tag {
 }
 
 model TagsOnArticles {
-  article    Article  @relation(fields: [articleId], references: [id])
-  articleId  Int
-  tag        Tag      @relation(fields: [tagId], references: [id])
-  tagId      Int
-  assignedAt DateTime @default(now())
-  assignedBy String @default("author")
+  article   Article @relation(fields: [articleId], references: [id])
+  articleId Int
+  tag       Tag     @relation(fields: [tagId], references: [id])
+  tagId     Int
 
   @@id([articleId, tagId])
   @@map("tag_article")
