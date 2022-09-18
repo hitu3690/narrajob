@@ -8,7 +8,29 @@
     "moduleResolution": "Node",
     "lib": ["ES2020", "DOM"],
     "allowJs": true,
-    "allowSyntheticDefaultImports": true
+    // any禁止したり、null,undefinedを一人前の型としたり、いろいろ設定できる
+    // "strict": true,
+    // anyを禁止
+    "noImplicitAny": true,
+    // 型指定していないthisを禁止
+    "noImplicitThis": true,
+    // nullやundefinedが入りうるオブジェクトには、!や?でチェックさせる
+    // "strictNullChecks": true,
+    // クラス定義時に、インスタンスがクラス宣言時やconstructorで初期化されてないことを禁止
+    "strictPropertyInitialization": true,
+    // 不正確な関数全ての経路の返り値の型をチェック
+    "noImplicitReturns": true,
+    // 未使用のローカル変数を禁止
+    "noUnusedLocals": true,
+    // 未使用のパラメータを禁止
+    "noUnusedParameters": true,
+    // 既定のインポートを許容。import React from "react";対策
+    "allowSyntheticDefaultImports": true,
+    // モジュールインポートのエイリアスを設定
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["./*"]
+    }
   },
   "exclude": ["./node_modules"]
 }
