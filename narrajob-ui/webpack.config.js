@@ -1,13 +1,11 @@
-const path = require("path");
+const path = require('path')
 
 module.exports = {
-  mode: "development",
-  entry: {
-    "js/app": ["./src/index.tsx"],
-  },
+  mode: 'development',
+  entry: path.resolve(__dirname, 'src', 'index.tsx'),
   output: {
-    path: path.join(__dirname, "dist"),
-    filename: "main.js",
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].bundle.js',
   },
   module: {
     rules: [
@@ -15,34 +13,44 @@ module.exports = {
         test: /\.(ts|tsx)$/,
         use: [
           {
-            loader: "babel-loader",
-            options: { presets: ["@babel/preset-env", "@babel/react"] },
+            loader: 'babel-loader',
+            options: { presets: ['@babel/preset-env', '@babel/react'] },
           },
           {
-            loader: "ts-loader",
+            loader: 'ts-loader',
             options: {
-              configFile: path.resolve(__dirname, "tsconfig.json"),
+              configFile: path.resolve(__dirname, 'tsconfig.json'),
             },
           },
         ],
       },
       {
         test: /\.scss$/,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
     ],
   },
+  devtool: 'inline-source-map',
   devServer: {
     static: {
-      directory: path.join(__dirname, "dist"),
+      directory: path.join(__dirname, 'public'),
     },
+    hot: true,
     port: 3000,
+    client: {
+      overlay: {
+        errors: true,
+        warnings: true,
+      },
+      progress: true,
+    },
+    // server: 'https',
   },
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".json"],
+    extensions: ['.ts', '.tsx', '.js', '.json'],
     alias: {
-      "@": path.resolve(__dirname, "src"),
+      '@': path.resolve(__dirname, 'src'),
     },
   },
-  target: "web",
-};
+  target: 'web',
+}

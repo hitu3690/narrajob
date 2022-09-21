@@ -17,7 +17,7 @@
     // nullやundefinedが入りうるオブジェクトには、!や?でチェックさせる
     // "strictNullChecks": true,
     // クラス定義時に、インスタンスがクラス宣言時やconstructorで初期化されてないことを禁止
-    "strictPropertyInitialization": true,
+    // "strictPropertyInitialization": true,
     // 不正確な関数全ての経路の返り値の型をチェック
     "noImplicitReturns": true,
     // 未使用のローカル変数を禁止
