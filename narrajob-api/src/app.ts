@@ -6,7 +6,7 @@ const app = express();
 app.use(express.json());
 
 app.use("/articles", articleController);
-app.use("/articles", tagController);
+app.use("/tags", tagController);
 
 app.get("/", (req, res) => {
   res.writeHead(200, { "Content-Type": "text/plain" });

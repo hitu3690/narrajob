@@ -1,7 +1,5 @@
 import { PrismaClient, Prisma } from "@prisma/client";
 import { faker } from "@faker-js/faker";
-import { create } from "domain";
-import resetDatabase from "../../src/utils/resetDatabase";
 
 const prisma = new PrismaClient();
 
